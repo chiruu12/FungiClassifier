@@ -63,13 +63,27 @@ The mushroom classification model has been integrated into a web application usi
 
 These augmentations help simulate variations in the data, leading to better model robustness.
 
+## Loading the Model
 
-## Model Saving and Checkpoints
+To load the pre-trained ResNet150 model for mushroom classification, use the following code:
 
-The model weights are saved using the `ModelCheckpoint` callback during training. This ensures that the best performing model (based on validation accuracy) is stored for later use.
 ```python
-checkpoint = ModelCheckpoint("best_model.h5", monitor='val_accuracy', save_best_only=True)
+import torch
+from torchvision import models
+
+# Load the pre-trained ResNet150 model
+model = models.resnet50(pretrained=True)  # Using ResNet150 as a base model
+
+# Modify the final layer for mushroom classification (number of classes should match your dataset)
+model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
+
+# Load the saved model weights (adjust path as necessary)
+model.load_state_dict(torch.load('path_to_saved_model.pth'))
+model.eval()  # Set the model to evaluation mode
 ```
+
+Ensure that  ```path_to_saved_model.pth``` points to the location where the trained model is saved.
+This code will load the model, modify it for mushroom classification, and set it up for inference.
 
 ## Source
 
