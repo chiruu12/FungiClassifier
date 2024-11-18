@@ -2,7 +2,7 @@ import streamlit as st
 from Mushroom_Classifier import MushroomClassifier
 
 # Streamlit page configuration
-st.set_page_config(page_title='Mushroom Classifier', layout='wide', initial_sidebar_state='expanded')
+st.set_page_config(page_title='Surviv', layout='wide', initial_sidebar_state='expanded')
 
 # Custom CSS styling
 st.markdown("""
@@ -37,7 +37,7 @@ st.sidebar.markdown(
     """,
     unsafe_allow_html=True
 )
-st.sidebar.markdown('<div class="heading-title">Classify</div>', unsafe_allow_html=True)
+st.sidebar.markdown('<div class="heading-title">Surviv</div>', unsafe_allow_html=True)
 
 # Instructions section
 st.sidebar.markdown("""
